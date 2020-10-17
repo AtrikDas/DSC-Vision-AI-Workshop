@@ -1,5 +1,11 @@
 # DSC-Vision-AI-Workshop
 
+# Introduction
+Have you ever wondered if memes are funnier in French rather than English? In this workshop we will be learning how to translate memes from different languages into English. We will use the Vision API, Translation API, and the Text-to-speech API of GCP to achieve our objectives:
+1. Pass text recognized by the Cloud Vision API to the Cloud Translation API.
+2. Create and use Cloud Translation glossaries to personalize Cloud Translation API translations.
+3. Create an audio representation of translated text using the Text-to-Speech API.
+
 # Setup
 1. Install Anaconda from [here](https://www.anaconda.com/products/individual) which provides a virtual environment to run your python scripts and libraries. **Make sure to add anaconda to your path.**
 2. After downloading it, create an environment called 'visionAI' by running these commands:
