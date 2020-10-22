@@ -8,6 +8,12 @@ from google.cloud import texttospeech
 from google.cloud import translate_v3beta1 as translate
 from google.cloud import vision
 
+# Setting up OS env variables
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r'your-key-name.json'
+PROJECT_ID = os.environ["GOOGLE_CLOUD_PROJECT"]
+
+# Image detection code
+
 
 def pic_to_text(infile):
     """Detects text in an image file
@@ -26,7 +32,7 @@ def pic_to_text(infile):
     with io.open(infile, "rb") as image_file:
         content = image_file.read()
 
-    image = vision.types.Image(content=content)
+    image = vision.Image(content=content)
 
     # For dense text, use document_text_detection
     # For less dense text, use text_detection
@@ -35,6 +41,8 @@ def pic_to_text(infile):
     print("Detected text: {}".format(text))
 
     return text
+
+# Create glossary code
 
 
 def create_glossary(languages, project_id, glossary_name, glossary_uri):
@@ -90,6 +98,8 @@ def create_glossary(languages, project_id, glossary_name, glossary_uri):
             + " already exists. No new glossary was created."
         )
 
+# Translation code
+
 
 def translate_text(
     text, source_language_code, target_language_code, project_id, glossary_name
@@ -134,6 +144,8 @@ def translate_text(
 
     # Extract translated text from API response
     return result.glossary_translations[0].translated_text
+
+# Text-to-speech code
 
 
 def text_to_speech(text, outfile):
@@ -204,9 +216,9 @@ def main():
     #   Here, the glossary includes French and English
     glossary_langs = ["fr", "en"]
     # Name that will be assigned to your project's glossary resource
-    glossary_name = "bistro-glossary"
+    glossary_name = "meme-glossary"
     # uri of .csv file uploaded to Cloud Storage
-    glossary_uri = "gs://cloud-samples-data/translation/bistro_glossary.csv"
+    glossary_uri = "gs://meme-bucket-3226/meme-glossary.csv"
 
     create_glossary(glossary_langs, PROJECT_ID, glossary_name, glossary_uri)
 
@@ -218,3 +230,7 @@ def main():
     )
     # translated text -> synthetic audio
     text_to_speech(text_to_speak, outfile)
+
+
+if __name__ == "__main__":
+    main()
