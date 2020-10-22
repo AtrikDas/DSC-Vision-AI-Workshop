@@ -286,9 +286,9 @@ def main():
     #   Here, the glossary includes French and English
     glossary_langs = ["fr", "en"]
     # Name that will be assigned to your project's glossary resource
-    glossary_name = "bistro-glossary"
+    glossary_name = "meme-glossary"
     # uri of .csv file uploaded to Cloud Storage
-    glossary_uri = "gs://cloud-samples-data/translation/bistro_glossary.csv"
+    glossary_uri = "gs://meme-bucket-3226/meme-glossary.csv"
 
     create_glossary(glossary_langs, PROJECT_ID, glossary_name, glossary_uri)
 
